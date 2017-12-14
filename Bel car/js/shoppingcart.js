@@ -70,7 +70,7 @@ function removeItemFromCartAll() {
 var jsoncart=[]
 function saveCart() {
     jsoncart=JSON.stringify(cart);
-    localStorage.setItem("jsoncart", jsoncart);
+    localStorage.setItem("belcarcart", jsoncart);
 }
 
 function removeEverything() {
@@ -79,11 +79,11 @@ function removeEverything() {
 }
 
 function loadCart() {
-    cart=JSON.parse(localStorage.getItem("jsoncart"));
+    cart=JSON.parse(localStorage.getItem("belcarcart"));
 }
 
 
-$('.dropdown-menu').fadeOut(1);
+$('.dropdown-menu').hide(1);
 
 $('.atc').on("click", function () {
     var itemName=$(this).attr("data-name");
@@ -97,16 +97,25 @@ $('.atc').on("click", function () {
     $('.cart-list').append('<li class="cart-li'+' '+itemName+'" ><div class="row"><div class="col-3 img-col"></div><div class="col-7"><div class="iname">' + itemName + '</div><div class="icount">'+itemCount+ ' '+ 'x'+ itemPrice+'</div><div class="iprice">' + itemPrice + ' $'+ '</div></div><div class="col-2 iksic"><i class="fa fa-times" data-name='+itemName+' aria-hidden="true"></i></div></div></li>');
 })
 
-$('.fa-times').on("click", function () {
+$(document).on("click", '.iksic',function () {
     var dataname=$(this).attr("data-name");
-    for (var i in cart) {
-        if (cart[i].name===dataname) {
-            cart[i].count=cart[i].count-1;
-        }
-    }
-    $('.'+dataname).remove();
+    removeItemFromCart(dataname);
 })
 
 $('.cart-click').on("click", function () {
     $('.cart-list').toggle(200);
+})
+
+$('#checkout').on("click",function () {
+    saveCart();
+    if (cart===[]) {
+        alert('Korpa je prazna');
+    } else {
+        alert('Korpa je sacuvana');
+    }
+})
+
+$('#load').on("click",function () {
+    loadCart();
+    alert('Korpa ucitana!');
 })
