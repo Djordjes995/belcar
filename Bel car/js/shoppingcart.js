@@ -21,6 +21,18 @@ function addItemToCart(name, price, count){
     cart.push(_item);
 }
 
+
+
+function prolazKrozCart(imezaproveru){
+    for (var i in cart){
+        if (cart[i].name===imezaproveru) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
 function cartCount() {
     var totalCount=0;
     for (var i in cart){
@@ -70,9 +82,31 @@ function loadCart() {
     cart=JSON.parse(localStorage.getItem("jsoncart"));
 }
 
+
+$('.dropdown-menu').fadeOut(1);
+
 $('.atc').on("click", function () {
     var itemName=$(this).attr("data-name");
     var itemPrice=$(this).attr("data-price");
+    var count=cartCount();
     addItemToCart(itemName,itemPrice);
     console.log(cart);
+    $('.notif').css("visibility","visible");
+    $('.notif').html(count+1);
+
+    $('.cart-list').append('<li class="cart-li'+' '+itemName+'" ><div class="row"><div class="col-3 img-col"></div><div class="col-7"><div class="iname">' + itemName + '</div><div class="icount">'+itemCount+ ' '+ 'x'+ itemPrice+'</div><div class="iprice">' + itemPrice + ' $'+ '</div></div><div class="col-2 iksic"><i class="fa fa-times" data-name='+itemName+' aria-hidden="true"></i></div></div></li>');
+})
+
+$('.fa-times').on("click", function () {
+    var dataname=$(this).attr("data-name");
+    for (var i in cart) {
+        if (cart[i].name===dataname) {
+            cart[i].count=cart[i].count-1;
+        }
+    }
+    $('.'+dataname).remove();
+})
+
+$('.cart-click').on("click", function () {
+    $('.cart-list').toggle(200);
 })

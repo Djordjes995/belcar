@@ -64,9 +64,67 @@ body {
 .cart-ul li:hover {
     cursor: pointer; }
 
+.cart-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0px;
+    padding: 0px;
+}
+
+.img-col {
+    padding: 35px;
+    background: url("../img/carpart1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.iname {
+    font-size: 18px;
+}
+
+.icount {
+    font-size: 15px;
+    color: #ced4da;
+}
+
+.iprice {
+    margin-top: 8px;
+    font-size: 19px;
+    color: #2581DC
+}
+
+.fa-times {
+    color: #a5aaaa;
+}
+
+.cart-li {
+    border-top: 1px solid #a5aaaa;
+}
+
+.cart-li:hover {
+    background-color: #e5e5e5;
+}
+
+.cart-li:hover .fa-times {
+    color: #2581DC;
+}
+
 .cart-part {
     display: flex;
     justify-content: flex-end; }
+
+.notif {
+    visibility: hidden;
+    background-color: #3692ed;
+    border-radius: 50%;
+    color: white;
+    padding: 5px;
+    font-size: 15px;
+}
 
 .vecifa {
     font-weight: bold;
