@@ -119,3 +119,10 @@ $('#load').on("click",function () {
     loadCart();
     alert('Korpa ucitana!');
 })
+
+$('#clear-cart').on("click",function () {
+    removeEverything();
+    $('.cart-list').empty();
+    alert('Korpa je izbrisana');
+    $('.notif').fadeOut(200);
+})
