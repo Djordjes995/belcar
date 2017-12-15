@@ -74,60 +74,20 @@
             </div>
         </div>
         <section class="navigation">
-                <div class="nav-container">
-                  <nav>
-                    <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-                    <ul class="nav-list">
-                      <li class="categories-li">
-                        <a href="#!">Categories</a>
-                      </li>
-                      <li>
-                        <a href="#!">Albums</a>
-                      </li>
-                      <li>
-                        <a href="#!">Brands</a>
-                        <!-- <ul class="nav-dropdown">
-                          <li>
-                            <a href="#!">Web Design</a>
-                          </li>
-                          <li>
-                            <a href="#!">Web Development</a>
-                          </li>
-                          <li>
-                            <a href="#!">Graphic Design</a>
-                          </li>
-                        </ul> -->
-                      </li>
-                      <li>
-                        <a href="#!">Blogs</a>
-                      </li>
-                      <li>
-                        <a href="#!">FAQ</a>
-                        <!-- <ul class="nav-dropdown">
-                          <li>
-                            <a href="#!">Web Design</a>
-                          </li>
-                          <li>
-                            <a href="#!">Web Development</a>
-                          </li>
-                          <li>
-                            <a href="#!">Graphic Design</a>
-                          </li>
-                        </ul> -->
-                      </li>
-                      <li>
-                        <a href="#!">ecoc service</a>
-                      </li>
-                      <li>
-                        <a href="#!">download</a>
-                      </li>
-                      <li>
-                        <a href="#!">contact</a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </section>
+            <div class="wrapper">
+                <nav class="topnav" id="myTopnav">
+                    <a href="#" class="active">Categories</a>
+                    <a href="#">Albums</a>
+                    <a href="#">blogs</a>
+                    <a href="#">faq</a>
+                    <a href="#">ecoc service</a>
+                    <a href="#">download</a>
+                    <a href="#">stores</a>
+                    <a href="#">contact</a>
+                    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+                </nav>
+            </div>
+        </section>
     </header>
     <main>
         <div class="wrapper">
@@ -861,14 +821,6 @@
 </div>
 
 
-
-
-
-
-
-
-
-
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/owl.carousel.js"></script>
 <script src="js/owljs.js"></script>
@@ -891,6 +843,16 @@
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMzFOSWZgXkILM2NpVyH5hJ7mp8JsBF5M&callback=initMap">
+</script>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
 </script>
 </body>
 </html>
