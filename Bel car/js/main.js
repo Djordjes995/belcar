@@ -1,35 +1,40 @@
-// jQuery(function($) {
-//     $(document).ready( function() {
-//     $('.navigation').stickUp();
-//     });
-//  });
-//
-//  var fullwidth=false;
-//
-// $('#nav-toggle').on("click",function(){
-//     if (fullwidth===false){
-//     $('.categories-li').css("width","100%");
-//     fullwidth=true;
-//     return
-//     }
-//
-//     if (fullwidth===true){
-//     $('.categories-li').css("width","25%");
-//     fullwidth=false;
-//     return
-//     }
-//
-// });
+
+/* SUB MENU */
+
+if ($(window).outerWidth()>990){
+    $('.cl4').on("mouseover", function () {
+        var width=$(this).outerWidth();
+        var height=$(this).outerHeight();
+
+        $('.sub-menu').css("left",width);
+        $('.sub-menu').css("top",3*height);
+
+        $('.sub-li').css("width",width);
+
+    })
+}
+
+/* DONJI NAVBAR */
 
 
-$('.cl4').on("mouseover", function () {
-    var width=$(this).outerWidth();
-    var height=$(this).outerHeight();
+var cmw=$('.sub-menu').outerWidth;
 
-    $('.sub-menu').css("left",width);
-    $('.sub-menu').css("top",3*height);
+if ($(window).outerWidth()>767) {
+    $('.active').css("width",cmw);
+}
 
-    $('.sub-li').css("width",width);
-
+$('.active').on("click", function () {
+    $('.category-menu').toggle(200);
 })
 
+var strpr=0;
+
+$('.icon').on("click",function () {
+    if (strpr===0){
+        $('.strecth').css("display","block");
+        strpr=1;
+    } else if (strpr===1) {
+        $('.strecth').css("display","none");
+        strpr=0;
+    }
+})

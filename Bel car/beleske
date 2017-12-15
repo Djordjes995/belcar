@@ -1,9 +1,10 @@
->MENU
->Cart da dobro broji i da moze da brise
->Podkategorije da bude responsive
->Responzivnost gornjeg dela
+ MENU ->Zavrseno
+ Cart da dobro broji -> Zavrseno
+ Cart da brise ->Zavrseno
+ Podkategorije da bude responsive ->Zavrseno
+ Responzivnost gornjeg dela ->Zavrseno
 >Slika u cart listi da bude responzivna
->One linije ispod hedera da budu krace kao na slici
+>One linije ispod headinga da budu krace kao na slici
 >Slajder ako moze da se prolepsa
 >Futer
 

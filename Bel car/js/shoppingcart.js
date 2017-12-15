@@ -6,6 +6,7 @@ var item=function (name, price, count=1) {
 }
 
 var itemCount=1;
+var pocetak=0;
 
 function addItemToCart(name, price, count){
     for (var i in cart){
@@ -14,7 +15,12 @@ function addItemToCart(name, price, count){
             itemCount=cart[i].count;
             return false;
         } else {
-            itemCount=cart[i].count;
+            if (pocetak===0){
+                itemCount=1;
+                pocetak=1;
+            } else {
+                itemCount=cart[i].count;
+            }
         }
     }
     var _item=new item(name,price,count);
@@ -27,9 +33,7 @@ function addItemToCart(name, price, count){
 function prolazKrozCart(imezaproveru){
     for (var i in cart){
         if (cart[i].name===imezaproveru) {
-            return true;
-        } else {
-            return false;
+            return cart[i];
         }
     }
 }
@@ -97,20 +101,31 @@ $('.atc').on("click", function () {
     $('.notif').html(count+1);
 
     if (isNEw){
-        $('.cart-list').append('<li data-name-unique="'+ itemName +'" class="cart-li'+' '+itemName+'" ><div class="row"><div class="col-3 img-col"></div><div class="col-7"><div class="iname">' + itemName + '</div><div class="icount">'+itemCount+ ' '+ 'x'+ itemPrice+'</div><div class="iprice">' + itemPrice + ' $'+ '</div></div><div class="col-2 iksic"><i class="fa fa-times" data-name='+itemName+' aria-hidden="true"></i></div></div></li>');
+        $('.cart-list').append('<li data-name-unique="'+ itemName +'" class="cart-li'+' '+itemName+'" ><div class="row"><div class="col-3 img-col"></div><div class="col-7"><div class="iname">' + itemName + '</div><div class="icount">'+prolazKrozCart(itemName).count+ ' '+ 'x'+ itemPrice+'</div><div class="iprice">' + itemPrice + ' $'+ '</div></div><div class="col-2 iksic"><i class="fa fa-times" data-name='+itemName+' aria-hidden="true"></i></div></div></li>');
     } else {
         var productRow=$("li").find("[data-name-unique='" + itemName + "']");
-        $(productRow.find(".icount")).html(itemCount+" x "+itemPrice);
+        $(productRow.find(".icount")).html(itemCount+" x "+itemPrice+"$");
     }
 
+    alert(itemName+" je dodat u korpu!");
 })
 
-$(document).on("click", '.iksic',function () {
+$(document).on("click", '.fa-times',function () {
     var dataname=$(this).attr("data-name");
-    console.log(dataname);
+
+    var cartitem=prolazKrozCart(dataname);
+    removeItemFromCart(dataname);
+
+    if(cartitem.count>0) {
+        $("li").find("[data-name-unique='" + dataname + "']").find(".icount").html(cartitem.count+" x " + cartitem.price+" $");
+    } else {
+        $("li").find("[data-name-unique='" + dataname + "']").remove();
+    }
+
+    $('.notif').html(cartCount());
 })
 
-$('.cart-click').on("click", function () {
+$('.vecifa').on("click", function () {
     $('.cart-list').toggle(200);
 })
 

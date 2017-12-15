@@ -177,6 +177,8 @@ main {
     z-index: 2;
 }
 
+
+
 .cl4:hover .sub-menu {
     display: block;
 }
@@ -201,6 +203,28 @@ main {
 
 .sub-li:hover {
     background-color: #e5e5e5;
+}
+
+@media screen and (max-width: 990px) {
+    .cl4:hover .sub-menu {
+        position: relative;
+        display: block;
+
+    }
+
+    .sub-li {
+        display: block;
+        border: none;
+        background-color: transparent;
+        color: #a5aaaa;
+        padding: 8px;
+    }
+
+    .sub-menu:last-child{
+        border-bottom: none;
+    }
+
+
 }
 
 
@@ -277,6 +301,10 @@ main {
     transform: scale(1.1);
     box-shadow: 5px 5px 2px #a5aaaa;
     transition: 0.4s all;
+}
+
+.card-body {
+    margin-bottom: 20px;
 }
 
 .card-header img {
