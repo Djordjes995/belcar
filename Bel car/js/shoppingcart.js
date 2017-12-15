@@ -8,7 +8,7 @@ var item=function (name, price, count=1) {
 var itemCount=1;
 var pocetak=0;
 
-function addItemToCart(name, price, count){
+function addItemToCart(name, price, count){ //DODAVANJE PROIZVODA
     for (var i in cart){
         if (cart[i].name===name){
             cart[i].count++;
@@ -30,7 +30,7 @@ function addItemToCart(name, price, count){
 
 
 
-function prolazKrozCart(imezaproveru){
+function prolazKrozCart(imezaproveru){ //PROVERA DA LI POSTOJI PROIZVOD U KORPI
     for (var i in cart){
         if (cart[i].name===imezaproveru) {
             return cart[i];
@@ -38,7 +38,7 @@ function prolazKrozCart(imezaproveru){
     }
 }
 
-function cartCount() {
+function cartCount() { //UKUPAN BROJ PROIZVODA U KORPI
     var totalCount=0;
     for (var i in cart){
         totalCount+=cart[i].count;
@@ -46,7 +46,7 @@ function cartCount() {
     return totalCount;
 }
 
-function cartCost() {
+function cartCost() { //UKUPNO KOSTANJE KORPE
     var totalCost=0;
     for (var i in cart){
         totalCost+=cart[i].price*cart[i].count;
@@ -54,7 +54,7 @@ function cartCost() {
     return totalCost;
 }
 
-function removeItemFromCart(name) {
+function removeItemFromCart(name) { //BRISANJE PROIZVODA
     for (var i in cart) {
         if (cart[i].name === name) {
             cart[i].count--;
@@ -74,24 +74,26 @@ function removeItemFromCartAll() {
 }
 
 var jsoncart=[]
-function saveCart() {
+function saveCart() { //CUVANJE U LOCAL STORAGE
     jsoncart=JSON.stringify(cart);
     localStorage.setItem("belcarcart", jsoncart);
 }
 
-function removeEverything() {
+function removeEverything() { //BRISANJE CELE KORPE
     cart=[];
     saveCart();
 }
 
-function loadCart() {
+function loadCart() {  //LOADOVANJE IZ LOCAL STORAGE
     cart=JSON.parse(localStorage.getItem("belcarcart"));
 }
+
+/* MANIPULACIJA KORPE */
 
 
 $('.dropdown-menu').hide(1);
 
-$('.atc').on("click", function () {
+$('.atc').on("click", function () {  //dodavanje u dropdown menu
     var itemName=$(this).attr("data-name");
     var itemPrice=$(this).attr("data-price");
     var count=cartCount();
@@ -110,7 +112,7 @@ $('.atc').on("click", function () {
     alert(itemName+" je dodat u korpu!");
 })
 
-$(document).on("click", '.fa-times',function () {
+$(document).on("click", '.fa-times',function () { //brisanje iz menija
     var dataname=$(this).attr("data-name");
 
     var cartitem=prolazKrozCart(dataname);
@@ -125,11 +127,11 @@ $(document).on("click", '.fa-times',function () {
     $('.notif').html(cartCount());
 })
 
-$('.vecifa').on("click", function () {
+$('.vecifa').on("click", function () { //toggle menija
     $('.cart-list').toggle(200);
 })
 
-$('#checkout').on("click",function () {
+$('#checkout').on("click",function () { //cuvanje
     saveCart();
     if (cart===[]) {
         alert('Korpa je prazna');
@@ -138,12 +140,12 @@ $('#checkout').on("click",function () {
     }
 })
 
-$('#load').on("click",function () {
+$('#load').on("click",function () { //loadovanje
     loadCart();
     alert('Korpa ucitana!');
 })
 
-$('#clear-cart').on("click",function () {
+$('#clear-cart').on("click",function () { //brisanje
     removeEverything();
     $('.cart-list').empty();
     alert('Korpa je izbrisana');

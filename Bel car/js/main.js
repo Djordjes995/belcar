@@ -27,7 +27,7 @@ $('.active').on("click", function () {
     $('.category-menu').toggle(200);
 })
 
-var strpr=0;
+var strpr=0; //provera za strectch
 
 $('.icon').on("click",function () {
     if (strpr===0){
