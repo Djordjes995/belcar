@@ -103,7 +103,7 @@ $('.atc').on("click", function () {  //dodavanje u dropdown menu
     $('.notif').html(count+1);
 
     if (isNEw){
-        $('.cart-list').append('<li data-name-unique="'+ itemName +'" class="cart-li'+' '+itemName+'" ><div class="row"><div class="col-3 img-col"></div><div class="col-7"><div class="iname">' + itemName + '</div><div class="icount">'+prolazKrozCart(itemName).count+ ' '+ 'x'+ itemPrice+'</div><div class="iprice">' + itemPrice + ' $'+ '</div></div><div class="col-2 iksic"><i class="fa fa-times" data-name='+itemName+' aria-hidden="true"></i></div></div></li>');
+        $('.cart-list').append('<li data-name-unique="'+ itemName +'" class="cart-li'+' '+itemName+'" ><div class="row"><div class="col-4 img-col"></div><div class="col-6"><div class="iname">' + itemName + '</div><div class="icount">'+prolazKrozCart(itemName).count+ ' '+ 'x'+ itemPrice+'</div><div class="iprice">' + itemPrice + ' $'+ '</div></div><div class="col-2 iksic"><i class="fa fa-times" data-name='+itemName+' aria-hidden="true"></i></div></div></li>');
     } else {
         var productRow=$("li").find("[data-name-unique='" + itemName + "']");
         $(productRow.find(".icount")).html(itemCount+" x "+itemPrice+"$");
@@ -127,6 +127,7 @@ $(document).on("click", '.fa-times',function () { //brisanje iz menija
     $('.notif').html(cartCount());
 })
 
+
 $('.vecifa').on("click", function () { //toggle menija
     $('.cart-list').toggle(200);
 })
@@ -143,6 +144,9 @@ $('#checkout').on("click",function () { //cuvanje
 $('#load').on("click",function () { //loadovanje
     loadCart();
     alert('Korpa ucitana!');
+    for (var i in cart) {
+        $('.cart-list').append('<li data-name-unique="'+ cart[i].name +'" class="cart-li'+' '+cart[i].name+'" ><div class="row"><div class="col-4 img-col"></div><div class="col-6"><div class="iname">' + cart[i].name + '</div><div class="icount">'+cart[i].count+ ' '+ 'x'+ cart[i].price+'</div><div class="iprice">' + cart[i].price + ' $'+ '</div></div><div class="col-2 iksic"><i class="fa fa-times" data-name='+cart[i].name+' aria-hidden="true"></i></div></div></li>');
+    }
 })
 
 $('#clear-cart').on("click",function () { //brisanje

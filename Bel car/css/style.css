@@ -75,7 +75,7 @@ body {
 
 .img-col {
     padding: 35px;
-    background: url("../img/carpart1.jpg");
+    background: url("../img/exhaust_large.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
@@ -559,3 +559,4 @@ main {
     display: flex;
     flex-direction: row;
 }
+
