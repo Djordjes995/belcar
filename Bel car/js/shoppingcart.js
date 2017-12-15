@@ -12,13 +12,14 @@ function addItemToCart(name, price, count){
         if (cart[i].name===name){
             cart[i].count++;
             itemCount=cart[i].count;
-            return;
+            return false;
         } else {
             itemCount=cart[i].count;
         }
     }
     var _item=new item(name,price,count);
     cart.push(_item);
+    return true;
 }
 
 
@@ -50,15 +51,16 @@ function cartCost() {
 }
 
 function removeItemFromCart(name) {
-    for (var i in cart){
-        if (cart[i]===name){
+    for (var i in cart) {
+        if (cart[i].name === name) {
             cart[i].count--;
-            if (cart[i].count===0){
-                cart.splice(i,1);
+            if (cart[i].count === 0) {
+                cart.splice(i, 1);
             }
             break;
         }
     }
+    saveCart();
 }
 
 function removeItemFromCartAll() {
@@ -89,17 +91,23 @@ $('.atc').on("click", function () {
     var itemName=$(this).attr("data-name");
     var itemPrice=$(this).attr("data-price");
     var count=cartCount();
-    addItemToCart(itemName,itemPrice);
+    var isNEw=addItemToCart(itemName,itemPrice);
     console.log(cart);
     $('.notif').css("visibility","visible");
     $('.notif').html(count+1);
 
-    $('.cart-list').append('<li class="cart-li'+' '+itemName+'" ><div class="row"><div class="col-3 img-col"></div><div class="col-7"><div class="iname">' + itemName + '</div><div class="icount">'+itemCount+ ' '+ 'x'+ itemPrice+'</div><div class="iprice">' + itemPrice + ' $'+ '</div></div><div class="col-2 iksic"><i class="fa fa-times" data-name='+itemName+' aria-hidden="true"></i></div></div></li>');
+    if (isNEw){
+        $('.cart-list').append('<li data-name-unique="'+ itemName +'" class="cart-li'+' '+itemName+'" ><div class="row"><div class="col-3 img-col"></div><div class="col-7"><div class="iname">' + itemName + '</div><div class="icount">'+itemCount+ ' '+ 'x'+ itemPrice+'</div><div class="iprice">' + itemPrice + ' $'+ '</div></div><div class="col-2 iksic"><i class="fa fa-times" data-name='+itemName+' aria-hidden="true"></i></div></div></li>');
+    } else {
+        var productRow=$("li").find("[data-name-unique='" + itemName + "']");
+        $(productRow.find(".icount")).html(itemCount+" x "+itemPrice);
+    }
+
 })
 
 $(document).on("click", '.iksic',function () {
     var dataname=$(this).attr("data-name");
-    removeItemFromCart(dataname);
+    console.log(dataname);
 })
 
 $('.cart-click').on("click", function () {
