@@ -76,10 +76,14 @@ body {
 .img-col {
     padding: 35px;
     background: url("../img/exhaust_large.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
+}
+
+.img-col img {
     width: 100%;
+    height: auto;
 }
 
 .iname {
@@ -156,7 +160,7 @@ main {
     padding-right: 20px;
     padding-left: 8px;
     border: 1px solid rgb(189, 184, 184);
-   /* border-top: none; */
+    /* border-top: none; */
 }
 
 .category-li:hover {
