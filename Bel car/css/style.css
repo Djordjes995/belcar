@@ -290,8 +290,20 @@ main {
 
 .fp-head {
     font-weight: bold;
-    border-bottom: 4px solid #3692ed;
-    margin-bottom: 20px ;
+    border-bottom: 2px solid #dddfe2;
+    /*margin-bottom: 20px ;*/
+}
+
+.fp-head::after{
+    display: block;
+    position: absolute;
+    content: "";
+    width: 20%;
+    border-bottom: solid 4px #3692ed;
+}
+
+.locations .row {
+    margin-top: 35px;
 }
 
 .fp-card {
@@ -535,6 +547,14 @@ main {
 
 .summary {
     background-color: #343e47;
+}
+
+.fh::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 7%;
+    border-bottom: 2px solid #3692ed;
 }
 
 .fh {
