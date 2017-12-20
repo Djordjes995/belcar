@@ -95,7 +95,6 @@ function loadCart() {  //LOADOVANJE IZ LOCAL STORAGE
 
 /* MANIPULACIJA KORPE */
 
-
 $('.dropdown-menu').hide(1);
 
 $('.atc').on("click", function () {  //dodavanje u dropdown menu
@@ -113,7 +112,6 @@ $('.atc').on("click", function () {  //dodavanje u dropdown menu
         var productRow=$("li").find("[data-name-unique='" + itemName + "']");
         $(productRow.find(".icount")).html(itemCount+" x "+itemPrice+"$");
     }
-
     alert(itemName+" je dodat u korpu!");
 })
 
@@ -132,8 +130,16 @@ $(document).on("click", '.fa-times',function () { //brisanje iz menija
     $('.notif').html(cartCount());
 })
 
+var procprov=0;
 
 $('.vecifa').on("click", function () { //toggle menija
+    if (procprov===0){
+        $('.cart-list').append('<li class="proceed">PROCEED</li>');
+        procprov=1;
+    } else if (procprov===1){
+        $('.proceed').remove();
+        procprov=0;
+    }
     $('.cart-list').toggle(200);
 })
 

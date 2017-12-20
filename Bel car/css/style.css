@@ -73,6 +73,14 @@ body {
     padding: 0px;
 }
 
+.proceed {
+    background-color: orange;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+
 .img-col {
     padding: 35px;
     background: url("../img/exhaust_large.jpg");
@@ -533,6 +541,24 @@ main {
     }
 }
 
+@media screen and (max-width: 575px) {
+    .logo-container{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 990px){
+    .cart-ul {
+        padding: 0px;
+    }
+
+    .cart-part {
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
 
 /* MAP */
 
@@ -595,5 +621,32 @@ main {
     width: 100%;
     height: auto;
     opacity: 0.5;
+}
+
+.footer-search {
+    margin-left: 10%;
+}
+
+.sr {
+    margin-left: 0px;
+}
+
+.srcf {
+    flex-direction:column;
+}
+
+.faf {
+    padding: 10px;
+    color: #a5aaaa;
+    border-radius: 50%;
+    border: 1px solid #a5aaaa;
+    margin-bottom: 15px;
+}
+
+footer {
+    background-color: #333538;
+    color: #a5aaaa;
+    padding-bottom: 1px;
+    padding-top: 10px;
 }
 
