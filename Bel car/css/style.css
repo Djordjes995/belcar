@@ -81,9 +81,8 @@ body {
     background-position:center;
 }
 
-.img-col img {
-    width: 100%;
-    height: auto;
+.iksic {
+    padding: 0px;
 }
 
 .iname {
@@ -562,5 +561,19 @@ main {
 .lists {
     display: flex;
     flex-direction: row;
+}
+
+.footer-img-row {
+    margin-right: 7%;
+    margin-left: 7%;
+    align-items: center;
+    border-top: 1px solid #a5aaaa;
+    border-bottom: 1px solid #a5aaaa;
+}
+
+.footer-img {
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
 }
 
