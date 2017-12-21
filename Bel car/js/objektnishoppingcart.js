@@ -75,7 +75,7 @@ var jsoncart=[]
 var newOrder;
 var provera=0;
 var procprov=0;
-
+$('.dropdown-menu').hide(1);
 
 $('.atc').on("click",function () {
     var itemId=$(this).attr("data-id");
