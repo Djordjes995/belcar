@@ -93,7 +93,10 @@ $('.atc').on("click",function () {
     $('.notif').html(newOrder.cartCount());
 
     if (isnew){
-        $('.cart-list').append('<li data-name-unique="'+ itemName +'" class="cart-li'+' '+itemName+'" ><div class="row"><div class="col-4 img-col"></div><div class="col-6"><div class="iname">' + itemName + '</div><div class="icount">'+newOrder.itemCount(itemId)+ ' '+ 'x'+ itemPrice+'</div><div class="iprice">' + itemPrice + ' $'+ '</div></div><div class="col-2 iksic"><i class="fa fa-times" data-id='+itemId+' data-name='+itemName+' aria-hidden="true"></i></div></div></li>');
+        $('.cart-list').append('<li data-name-unique="'+ itemName +'" class="cart-li'+' '+itemName+'" ><div class="row">' +
+            '<div class="col-4 img-col"></div><div class="col-6"><div class="iname">' + itemName + '</div><div class="icount">'
+            +newOrder.itemCount(itemId)+ ' '+ 'x'+ itemPrice+'</div><div class="iprice">' + itemPrice + ' $'+ '</div></div>' +
+            '<div class="col-2 iksic"><i class="fa fa-times" data-id='+itemId+' data-name='+itemName+' aria-hidden="true"></i></div></div></li>');
     } else {
         var productRow=$("li").find("[data-name-unique='" + itemName + "']");
         $(productRow.find(".icount")).html(newOrder.itemCount(itemId)+" x "+itemPrice+"$");

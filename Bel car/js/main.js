@@ -1,4 +1,19 @@
 
+/* STICKY NAVBAR */
+
+var sn=$('.navigation');
+    mns='mns';
+    hdr=$('header').height();
+
+$(window).scroll(function () {
+    if ($(this).scrollTop()>hdr){
+        sn.addClass(mns);
+    } else {
+        sn.removeClass(mns);
+    }
+})
+
+
 /* SUB MENU */
 
 if ($(window).outerWidth()>990){
